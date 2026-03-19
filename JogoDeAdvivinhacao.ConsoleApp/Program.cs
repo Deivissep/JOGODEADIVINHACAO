@@ -10,15 +10,19 @@ O sistema informará o usuário se o mesmo acertou ou não, podendo incluir dica
 
 
 
-//1.
+// 2 Nosso jogo deve gerar numeros secretos aleatórios
+using System.Security.Cryptography;
+
 Console.WriteLine("-----------------------------------");
 Console.WriteLine("Jogo de Adivinhação");
 Console.WriteLine("-----------------------------------");
 
 Console.WriteLine();
-Console.WriteLine("Digite um numero: ");
+Console.Write("Digite um numero: ");
 string strNumeroDigitado = Console.ReadLine();
 
-Console.WriteLine("O número digitado foi: " + strNumeroDigitado);
+int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
 
-Console.ReadLine;
+Console.WriteLine("O número digitado foi: " + numeroAleatorio);
+
+Console.ReadLine();

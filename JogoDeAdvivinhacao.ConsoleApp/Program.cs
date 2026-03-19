@@ -17,12 +17,24 @@ Console.WriteLine("-----------------------------------");
 Console.WriteLine("Jogo de Adivinhação");
 Console.WriteLine("-----------------------------------");
 
-Console.WriteLine();
-Console.Write("Digite um numero: ");
-string strNumeroDigitado = Console.ReadLine();
-
 int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
 
-Console.WriteLine("O número digitado foi: " + numeroAleatorio);
+Console.WriteLine();
+Console.Write("Digite um numero: ");
+int numeroDigitado = Convert.ToInt32(Console.ReadLine());
 
+if (numeroDigitado == numeroAleatorio)
+{
+    Console.WriteLine("Parabéns, você acertou! O número era: " + numeroAleatorio);
+}
+
+else if (numeroDigitado > numeroAleatorio)
+{
+    Console.WriteLine("O numero digitado foi maior que o número secreto!");
+}
+
+else
+{
+    Console.WriteLine("O numero digitado foi menor que o número secreto!");
+}
 Console.ReadLine();

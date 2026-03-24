@@ -4,6 +4,9 @@ int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
 
 bool jogoDeveContinuar = true;
 
+string[] numerosDigitados = new string[100];
+int tentativas = 0;
+
 while (jogoDeveContinuar == true)
 {
     Console.Clear();
@@ -32,7 +35,7 @@ while (jogoDeveContinuar == true)
 
     Console.WriteLine();
     Console.Write("Deseja Continuar: (S/N): ");
-    string opcaoContinuar = Console.ReadLine().ToUpper();
+    string opcaoContinuar = Console.ReadLine()!.ToUpper();
 
     if (opcaoContinuar != "S")
     {

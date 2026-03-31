@@ -1,11 +1,30 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.Serialization.Formatters;
+using System.Security.Cryptography;
 
-///int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
+///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 bool jogoDeveContinuar = true;
-
-string[] numerosDigitados = new string[100];
-int tentativas = 0;
 
 while (jogoDeveContinuar == true)
 {
@@ -24,6 +43,7 @@ while (jogoDeveContinuar == true)
 
     int numeroAleatorio;
     int tentativasMaximas;
+
 
     switch (dificuldadeEscolhida)
     {
@@ -45,10 +65,13 @@ while (jogoDeveContinuar == true)
         default:
             Console.WriteLine("-------------------------------------");
             Console.WriteLine("Por Favor, selecione uma dificuldade válida.");
-            Console.Write("Digite ENTER para continuar...");
+            Console.Write("Pressione ENTER para continuar...");
             Console.ReadLine();
             continue;
     }
+
+    int[] numerosDigitados = new int[tentativasMaximas];
+    int contadorNumerosDigitados = 0;
 
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMaximas; tentativaAtual++)
     {
@@ -57,10 +80,37 @@ while (jogoDeveContinuar == true)
         Console.WriteLine("Jogo de Adivinhação");
         Console.WriteLine("-----------------------------------");
         Console.WriteLine($"Tentativa {tentativaAtual} de {tentativasMaximas}");
-        Console.WriteLine("-----------------------------------");
-        Console.Write("Digite um numero: ");
+        Console.WriteLine("------------------------------------");
+
+        Console.Write("Digite um número: ");
         int numeroDigitado = Convert.ToInt32(Console.ReadLine());
 
+        bool numeroEstaRepetido = false;
+
+        for (int indiceAtual = 0; indiceAtual < numerosDigitados.Length; indiceAtual++)
+        {
+            if (numerosDigitados[indiceAtual] == numeroDigitado)
+            {
+                numeroEstaRepetido = true;
+                break;
+            }
+        }
+
+        if (numeroEstaRepetido == true)
+        {
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("Voce já digitou este numero, tente novamente.");
+            Console.WriteLine("-----------------------------------------");
+
+            Console.Write("Pressione ENTER para continuar....");
+            Console.ReadLine();
+
+            tentativaAtual--;
+            continue;
+        }
+
+        numerosDigitados[contadorNumerosDigitados] = numeroDigitado;
+        contadorNumerosDigitados++;
 
         if (numeroDigitado == numeroAleatorio)
         {
@@ -79,11 +129,10 @@ while (jogoDeveContinuar == true)
         }
 
         Console.WriteLine("-----------------------------------");
-        Console.Write("Digite ENTER para continuar...");
+        Console.Write("Pressione ENTER para continuar...");
         Console.ReadLine();
     }
 
-    Console.WriteLine();
     Console.Write("Deseja Continuar: (S/N): ");
     string opcaoContinuar = Console.ReadLine()!.ToUpper();
 

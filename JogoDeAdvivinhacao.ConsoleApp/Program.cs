@@ -1,29 +1,6 @@
 ﻿using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography;
 
-///
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 bool jogoDeveContinuar = true;
 
 while (jogoDeveContinuar == true)
@@ -43,6 +20,7 @@ while (jogoDeveContinuar == true)
 
     int numeroAleatorio;
     int tentativasMaximas;
+    int pontos = 1000;
 
 
     switch (dificuldadeEscolhida)
@@ -84,6 +62,30 @@ while (jogoDeveContinuar == true)
 
         Console.Write("Digite um número: ");
         int numeroDigitado = Convert.ToInt32(Console.ReadLine());
+
+
+        if (numeroDigitado == numeroAleatorio)
+        {
+            Console.WriteLine("Parabéns, você acertou!");
+            Console.WriteLine($"Sua pontuação final foi: {pontos}");
+            break;
+        }
+
+        int diferenca = Math.Abs(numeroDigitado - numeroAleatorio);
+
+        if (diferenca >= 10)
+        {
+            pontos -= 100;
+        }
+        else if (diferenca >= 5)
+        {
+            pontos -= 50;
+        }
+        else if (diferenca >= 1)
+        {
+            pontos -= 20;
+        }
+        Console.WriteLine($"Pontuação Atual: {pontos}");
 
         bool numeroEstaRepetido = false;
 

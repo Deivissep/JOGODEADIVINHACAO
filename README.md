@@ -1,6 +1,6 @@
 # Jogo de Adivinhação
 
-![](./docs/jogo-de-adivinhacao.gif)
+![Jogo de Adivinhação de Numéros](./.docs/jogo-de-adivinhacao.gif)
 
 ## Projeto
 
